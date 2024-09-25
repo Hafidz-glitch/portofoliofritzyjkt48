@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fritzy JKT48 - Pesulap Muda</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #6a0dad;
+            --secondary-color: #ff6b6b;
+            --bg-color: #1a1a2e;
+            --text-color: #fff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .magic-bg {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .magician {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 300px;
+        }
+
+        .hat {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 80px;
+            background-color: #333;
+            border-radius: 50% 50% 0 0;
+        }
+
+        .hat::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: -20px;
+            right: -20px;
+            height: 30px;
+            background-color: #222;
+            border-radius: 50%;
+        }
+
+        .face {
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 100px;
+            background-color: #ffd1dc;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        }
+
+        .eyes {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .eye {
+            width: 20px;
+            height: 20px;
+            background-color: #333;
+            border-radius: 50%;
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 10px;
+            background-color: #ff6b6b;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .body {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 150px;
+            background-color: var(--primary-color);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .wand {
+            position: absolute;
+            top: 50%;
+            right: -30px;
+            width: 100px;
+            height: 5px;
+            background-color: #fff;
+            transform: rotate(-45deg);
+        }
+
+        .wand::before {
+            content: '✨';
+            position: absolute;
+            right: -20px;
+            font-size: 24px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .magic-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .magic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .magic-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .gallery-img {
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .btn-magic {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            border: none;
+            padding: 0.5rem 2rem;
+            border-radius: 25px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-magic:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(255, 107, 107, 0.4);
+        }
+
+        .footer {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: var(--text-color);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-icons {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--text-color);
+            margin: 0 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <header class="header magic-bg">
+        <div class="container">
+            <h1 class="mb-3">Fritzy JKT48</h1>
+            <p class="lead mb-5">Pesulap Muda yang Memukau</p>
+            <a href="#about" class="btn btn-magic">Jelajahi Keajaiban</a>
+
+            <div class="magician">
+                <div class="hat"></div>
+                <div class="face">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+                <div class="body">
+                    <div class="wand"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <section id="about" class="row align-items-center mb-5">
+            <div class="col-md-6">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQS_Tq6N2dT_mc8F3562WXhfQPa_sA47tNTqg&s" alt="Foto Fritzy" class="img-fluid rounded-circle">
+            </div>
+            <div class="col-md-6">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p>Selamat datang di dunia keajaiban! Saya Fritzy, anggota JKT48 yang juga seorang pesulap muda berbakat. Dengan paduan unik antara idol dan ilusi, saya menciptakan pertunjukan yang tak terlupakan.</p>
+                <p>Sihir dan musik adalah passion saya. Melalui keduanya, saya berusaha untuk membawa kegembiraan dan ketakjuban kepada setiap penonton.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-5">
+            <h2 class="section-title">Keahlian Magis</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="magic-card text-center">
+                        <i class="fas fa-wand-magic-sparkles magic-icon"></i>
+                        <h3>Sulap Kartu</h3>
+                        <p>Manipulasi kartu yang memukau dan trik-trik yang menakjubkan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="magic-card text-center">
+                        <i class="fas fa-brain magic-icon"></i>
+                        <h3>Mentalism</h3>
+                        <p>Membaca pikiran dan memprediksi masa depan dengan akurasi mengejutkan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="magic-card text-center">
+                        <i class="fas fa-hat-wizard magic-icon"></i>
+                        <h3>Ilusi Panggung</h3>
+                        <p>Pertunjukan spektakuler yang menantang realitas dan imajinasi.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="mb-5">
+            <h2 class="section-title">Galeri Keajaiban</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToA7lZyHbUbAO9KOeDdZHAeR-oAWFB-BtJtw&s" alt="Pertunjukan 1" class="img-fluid gallery-img">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjkV3llaVmjkcmqc1Xv-1OQHmsCU5wPfpSMQ&s" alt="Pertunjukan 2" class="img-fluid gallery-img">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="https://asset-2.tstatic.net/tribunkaltimwiki/foto/bank/images/Fritzy-Rosmerian-Juara-1-FESTA-Magic-Competition-2022.jpg" alt="Pertunjukan 3" class="img-fluid gallery-img">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/Fritzy-Rosmerian-333.jpg" alt="Pertunjukan 4" class="img-fluid gallery-img">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="https://t-2.tstatic.net/tribunnewswiki/foto/bank/images/Fritzy-Rosmerian-222.jpg" alt="Pertunjukan 5" class="img-fluid gallery-img">
+                </div>
+                <div class="col-md-4 mb-4">
+                    <img src="https://pamator.com/wp-content/uploads/2022/09/Fritzy-Indonesia-Gaot-Talent.png" alt="Pertunjukan 5" class="img-fluid gallery-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Nama Anda" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email Anda" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="4" placeholder="Pesan Anda" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-magic">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Fritzy JKT48. Semua Hak Cipta Dilindungi.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "polygon": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": false,
+                    "anim": {
+                        "enable": false,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": false,
+                        "speed": 40,
+                        "size_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ffffff",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+    </script>
+</body>
+</html>
